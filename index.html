@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Mappa di pesca</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+  <style> html,body,#map{ height:100%; margin:0; padding:0 } #map{ min-height:100vh } .topbar{position:absolute;left:10px;top:10px;z-index:1000;background:white;padding:6px;border-radius:4px;box-shadow:0 1px 4px rgba(0,0,0,0.3)} </style>
+</head>
+<body>
+  <div id="map"></div>
+  <div class="topbar">
+    <button id="refreshBtn">Aggiorna</button>
+    <small id="status" style="margin-left:8px"></small>
+  </div>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/papaparse@5.3.2/papaparse.min.js"></script>
+
+  <script>
+  // ========= CONFIG =========
+  // Dopo aver creato il Google Form/Sheet e pubblicato il foglio, incolla qui il link CSV (vedi istruzioni più sotto)
+  const DATA_CSV_URL = "PUT_YOUR_PUBLISHED_GOOGLE_SHEETS_CSV_LINK_HERE";
+  const START_CENTER = [41.9, 12.5];
+  const START_ZOOM = 6;
+  // ==========================
+
+  // utilità semplici per escape HTML
+  function esc(s){ return s ? String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;') : ''; }
+
+  // init mappa
+  const map = L.map('map').setView(START_CENTER, START_ZOOM);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '© OpenStreetMap'
+  }).addTo(map);
+
+  let dataLayer = null;
+  const statusEl = document.getElementById('status');
+
+  function createPopup(props){
+    let species = esc(props['Species'] || props['specie'] || props['species'] || '');
+    let date = esc(props['Date'] || props['date'] || '');
+    let notes = esc(props['Notes'] || props['notes'] || '');
+    let img = (props['Image URL'] || props['image_url'] || props['Image'] || '') ;
+    let html = `<b>${species}</b>`;
+    if(date) html += `<br>Data: ${date}`;
+    if(notes) html += `<br>${notes}`;
+    if(img) html += `<br><img src="${esc(img)}" alt="foto" style="max-width:240px;margin-top:6px">`;
+    return html;
+  }
+
+  function loadData(){
+    if(!DATA_CSV_URL || DATA_CSV_URL.includes("PUT_YOUR")) {
+      statusEl.textContent = "Imposta DATA_CSV_URL nel file index.html";
+      console.warn("Inserisci il link CSV pubblicato da Google Sheets in DATA_CSV_URL.");
+      return;
+    }
+    statusEl.textContent = "Caricamento...";
+    Papa.parse(DATA_CSV_URL, {
+      download: true, header: true, skipEmptyLines: true,
+      complete: function(results){
+        statusEl.textContent = `Caricati ${results.data.length} righe`;
+        // rimuovi layer precedente
+        if(dataLayer) { map.removeLayer(dataLayer); dataLayer = null; }
+        const features = results.data.map(row=>{
+          // possibili nomi di colonne: Latitude, Lat, latitude; Longitude, Lon, lng...
+          const lat = parseFloat(row['Latitude'] || row['Lat'] || row['latitude'] || row['lat']);
+          const lon = parseFloat(row['Longitude'] || row['Lon'] || row['longitude'] || row['lng'] || row['Lng']);
+          if(isNaN(lat) || isNaN(lon)) return null;
+          return { type:"Feature", geometry:{ type:"Point", coordinates:[lon, lat] }, properties: row };
+        }).filter(Boolean);
+        dataLayer = L.geoJSON(features, {
+          onEachFeature: function(feature, layer){
+            layer.bindPopup(createPopup(feature.properties));
+          }
+        }).addTo(map);
+        if(features.length) {
+          const bounds = dataLayer.getBounds();
+          if(bounds.isValid()) map.fitBounds(bounds.pad(0.2));
+        }
+      },
+      error: function(err){
+        statusEl.textContent = "Errore caricamento";
+        console.error(err);
+      }
+    });
+  }
+
+  document.getElementById('refreshBtn').addEventListener('click', loadData);
+
+  // carica all'avvio
+  loadData();
+
+  // (opzionale) ricarica ogni 2 minuti: commenta se non vuoi
+  // setInterval(loadData, 2*60*1000);
+  </script>
+</body>
+</html>
