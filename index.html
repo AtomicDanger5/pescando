@@ -50,6 +50,22 @@
       return html;
     }
 
+    // ====== Icone personalizzate ======
+    var spigolaIcon = L.icon({
+        iconUrl: 'https://i.imgur.com/1K6sMNi.png', // esempio Spigola tonda
+        iconSize: [40, 40],
+        iconAnchor: [20, 20],
+        popupAnchor: [0, -20]
+    });
+
+    var orataIcon = L.icon({
+        iconUrl: 'https://i.imgur.com/0Z1p9Zr.png', // esempio Orata tonda
+        iconSize: [40, 40],
+        iconAnchor: [20, 20],
+        popupAnchor: [0, -20]
+    });
+
+    // ====== Caricamento GeoJSON ======
     function loadData(){
       statusEl.textContent = "Caricamento...";
       fetch(GEOJSON_FILE)
@@ -57,6 +73,13 @@
         .then(data => {
           if(dataLayer) map.removeLayer(dataLayer);
           dataLayer = L.geoJSON(data, {
+            pointToLayer: function(feature, latlng) {
+              let icon;
+              if(feature.properties.Species === "Spigola") icon = spigolaIcon;
+              else if(feature.properties.Species === "Orata") icon = orataIcon;
+              else icon = spigolaIcon; // default
+              return L.marker(latlng, {icon: icon});
+            },
             onEachFeature: function(feature, layer){
               layer.bindPopup(createPopup(feature.properties));
             }
