@@ -30,7 +30,18 @@
         "Species": "mare",
         "Date": "2025-09-24",
         "Specie": "Ombrina",
-        "Notes": "Presa molo",
+        "Notes": "Surfcasting in diga Brenta SUD lato interno",
+        "Image URL": "https://upload.wikimedia.org/wikipedia/commons/3/33/Dorade_orata.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [12.3160, 45.1835] },
+      "properties": {
+        "Species": "mare",
+        "Date": "2025-09-24",
+        "Specie": "Orata",
+        "Notes": "Surfcasting in diga Brenta NORD lato esterno",
         "Image URL": "https://upload.wikimedia.org/wikipedia/commons/3/33/Dorade_orata.jpg"
       }
     }
