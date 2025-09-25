@@ -7,7 +7,7 @@
       "properties": {
         "Species": "fiume",
         "Date": "2025-09-25",
-        "Specie": "Ombrina"
+        "Specie": "Ombrina",
         "Notes": "Presa vicino al porto",
         "Image URL": "https://upload.wikimedia.org/wikipedia/commons/1/17/European_sea_bass.png"
       }
@@ -18,7 +18,7 @@
       "properties": {
         "Species": "barca",
         "Date": "2025-09-24",
-        "Specie": "Ombrina"
+        "Specie": "Ombrina",
         "Notes": "Presa dal molo",
         "Image URL": "https://upload.wikimedia.org/wikipedia/commons/3/33/Dorade_orata.jpg"
       }
@@ -29,7 +29,7 @@
       "properties": {
         "Species": "mare",
         "Date": "2025-09-24",
-        "Specie": "Ombrina"
+        "Specie": "Ombrina",
         "Notes": "Presa molo",
         "Image URL": "https://upload.wikimedia.org/wikipedia/commons/3/33/Dorade_orata.jpg"
       }
