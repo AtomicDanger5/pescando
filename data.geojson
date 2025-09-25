@@ -23,11 +23,11 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [12.31608531596596, 45.18357618360349] },
+      "geometry": { "type": "Point", "coordinates": [12.3160, 45.1835] },
       "properties": {
         "Species": "mare",
         "Date": "2025-09-24",
-        "Notes": "Presa dal molo",
+        "Notes": "Presa molo",
         "Image URL": "https://upload.wikimedia.org/wikipedia/commons/3/33/Dorade_orata.jpg"
       }
     }
