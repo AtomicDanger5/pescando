@@ -36,7 +36,7 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [12.3160, 45.1835] },
+      "geometry": { "type": "Point", "coordinates": [12.3172, 45.1872] },
       "properties": {
         "Species": "mare",
         "Date": "2025-09-24",
