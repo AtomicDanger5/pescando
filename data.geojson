@@ -5,7 +5,7 @@
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [12.4964, 41.9028] },
       "properties": {
-        "Species": "fiume",
+        "Species": "Pesca in fiume/canale",
         "Date": "2025-09-25",
         "Specie": "Ombrina",
         "Notes": "Presa vicino al porto",
@@ -16,7 +16,7 @@
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [14.2681, 40.8518] },
       "properties": {
-        "Species": "barca",
+        "Species": "Pesca in barca",
         "Date": "2025-09-24",
         "Specie": "Ombrina",
         "Notes": "Presa dal molo",
@@ -27,7 +27,7 @@
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [12.3160, 45.1835] },
       "properties": {
-        "Species": "mare",
+        "Species": "Pesca in mare",
         "Date": "2025-09-24",
         "Specie": "Ombrina",
         "Tecnica": "Surfcasting",
@@ -40,7 +40,7 @@
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [12.3172, 45.1872] },
       "properties": {
-        "Species": "mare",
+        "Species": "Pesca in mare",
         "Date": "2025-09-24",
         "Specie": "Orata",
         "Notes": "Surfcasting in diga Brenta NORD lato esterno",
@@ -51,7 +51,7 @@
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [12.3128, 45.2287] },
       "properties": {
-        "Species": "mare",
+        "Species": "Pesca in mare",
         "Date": "2025-09-24",
         "Specie": "Mormora",
         "Notes": "A fondo nel lato esterno",
