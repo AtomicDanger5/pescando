@@ -42,11 +42,15 @@
       let species = esc(props['Species'] || '');
       let date = esc(props['Date'] || '');
       let specie = esc(props['Specie'] || '');
+      let luogo = esc(props['Luogo'] || '');
+      let tecnica = esc(props['Tecnica'] || '');
       let notes = esc(props['Notes'] || '');
       let img = props['Image URL'] || '';
       let html = `<b>${species}</b>`;
       if(specie) html += `<br>Specie: ${specie}`;
       if(date) html += `<br>Data: ${date}`;
+      if(luogo) html += `<br>Luogo: ${luogo}`;
+      if(tecnica) html += `<br>Tecnica: ${tecnica}`;
       if(notes) html += `<br>Info: ${notes}`;
       if(img) html += `<br><img src="${esc(img)}" alt="foto" style="max-width:240px;margin-top:6px">`;
       return html;
