@@ -10,6 +10,16 @@
         "Notes": "Presa vicino al porto",
         "Image URL": "https://upload.wikimedia.org/wikipedia/commons/1/17/European_sea_bass.png"
       }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [14.2681, 40.8518] },
+      "properties": {
+        "Species": "Orata",
+        "Date": "2025-09-24",
+        "Notes": "Presa dal molo",
+        "Image URL": "https://upload.wikimedia.org/wikipedia/commons/3/33/Dorade_orata.jpg"
+      }
     }
   ]
 }
