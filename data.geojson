@@ -1,0 +1,15 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [12.4964, 41.9028] },
+      "properties": {
+        "Species": "Spigola",
+        "Date": "2025-09-25",
+        "Notes": "Presa vicino al porto",
+        "Image URL": "https://upload.wikimedia.org/wikipedia/commons/1/17/European_sea_bass.png"
+      }
+    }
+  ]
+}
