@@ -41,9 +41,11 @@
     function createPopup(props){
       let species = esc(props['Species'] || '');
       let date = esc(props['Date'] || '');
+      let specie = esc(props['Specie'] || '');
       let notes = esc(props['Notes'] || '');
       let img = props['Image URL'] || '';
       let html = `<b>${species}</b>`;
+      if(specie) html += `<br>Data: ${specie}`;
       if(date) html += `<br>Data: ${date}`;
       if(notes) html += `<br>${notes}`;
       if(img) html += `<br><img src="${esc(img)}" alt="foto" style="max-width:240px;margin-top:6px">`;
