@@ -82,9 +82,10 @@
           dataLayer = L.geoJSON(data, {
             pointToLayer: function(feature, latlng) {
               let icon;
-              if(feature.properties.Species === "Spigola") icon = spigolaIcon;
-              else if(feature.properties.Species === "Orata") icon = orataIcon;
-              else icon = spigolaIcon; // default
+              if(feature.properties.Type === "Mare") icon = mareIcon;
+              else if(feature.properties.Type === "Fiume") icon = fiumeIcon;
+              else if(feature.properties.Type === "Barca") icon = barcaIcon;
+              else icon = mareIcon; // default
               return L.marker(latlng, {icon: icon});
             },
             onEachFeature: function(feature, layer){
