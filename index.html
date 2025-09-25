@@ -47,10 +47,10 @@
       let notes = esc(props['Notes'] || '');
       let img = props['Image URL'] || '';
       let html = `<b>${species}</b>`;
-      if(specie) html += `<br>Specie:<b> ${specie}`;
+      if(specie) html += `<br>Specie:<b> ${specie}</b>`;
       if(date) html += `<br>Data: ${date}`;
       if(luogo) html += `<br>Luogo: ${luogo}`;
-      if(tecnica) html += `<br>Tecnica:<b> ${tecnica}`;
+      if(tecnica) html += `<br>Tecnica:<b> ${tecnica}</b>`;
       if(notes) html += `<br>Info: ${notes}`;
       if(img) html += `<br><img src="${esc(img)}" alt="foto" style="max-width:240px;margin-top:6px">`;
       return html;
