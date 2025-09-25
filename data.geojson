@@ -31,8 +31,8 @@
         "Date": "2025-09-24",
         "Specie": "Ombrina",
         "Tecnica": "Surfcasting",
-        "Luogo": "DIGA",
-        "Notes": "Surfcasting in diga Brenta SUD lato interno",
+        "Luogo": "Diga Brenta-Bacchiglione lato SUD",
+        "Notes": "A fondo lato interno foce",
         "Image URL": "https://upload.wikimedia.org/wikipedia/commons/3/33/Dorade_orata.jpg"
       }
     },
@@ -43,7 +43,9 @@
         "Species": "Pesca in mare",
         "Date": "2025-09-24",
         "Specie": "Orata",
-        "Notes": "Surfcasting in diga Brenta NORD lato esterno",
+        "Tecnica": "Surfcasting",
+        "Luogo": "Diga Brenta lato NORD",
+        "Notes": "In punta a lato spiaggia",
         "Image URL": "https://upload.wikimedia.org/wikipedia/commons/3/33/Dorade_orata.jpg"
       }
     },
@@ -54,7 +56,9 @@
         "Species": "Pesca in mare",
         "Date": "2025-09-24",
         "Specie": "Mormora",
-        "Notes": "A fondo nel lato esterno",
+        "Tecnica": "Beach Ledgering",
+        "Luogo": "Diga Sottomarina",
+        "Notes": "A fondo lato spiaggia in punta",
         "Image URL": "https://upload.wikimedia.org/wikipedia/commons/3/33/Dorade_orata.jpg"
       }
     }
