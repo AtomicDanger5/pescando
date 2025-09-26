@@ -56,28 +56,6 @@
       return html;
     }
 
-    // ====== Icone personalizzate ======
-    var mareIcon = L.icon({
-        iconUrl: 'mare.png', // esempio Spigola tonda
-        iconSize: [40, 40],
-        iconAnchor: [20, 20],
-        popupAnchor: [0, -20]
-    });
-
-    var fiumeIcon = L.icon({
-        iconUrl: 'fiume.png', // esempio Orata tonda
-        iconSize: [40, 40],
-        iconAnchor: [20, 20],
-        popupAnchor: [0, -20]
-    });
-  
-    var barcaIcon = L.icon({
-        iconUrl: 'barca.png', // esempio Orata tonda
-        iconSize: [40, 40],
-        iconAnchor: [20, 20],
-        popupAnchor: [0, -20]
-    });
-
     // ====== Caricamento GeoJSON ======
     function loadData(){
       statusEl.textContent = "Caricamento...";
@@ -87,12 +65,32 @@
           if(dataLayer) map.removeLayer(dataLayer);
           dataLayer = L.geoJSON(data, {
             pointToLayer: function(feature, latlng) {
-              let icon;
-              if(feature.properties.Species === "Pesca in mare") icon = mareIcon;
-              else if(feature.properties.Species === "Pesca in fiume/canale") icon = fiumeIcon;
-              else if(feature.properties.Species === "Pesca in barca") icon = barcaIcon;
-              else icon = mareIcon; // default
-              return L.marker(latlng, {icon: icon});
+              const species = feature.properties.Species || "";
+
+              // scegli l’icona giusta in base alla specie
+              let iconUrl = "mare.png"; // default
+              if (species === "Pesca in mare") iconUrl = "mare.png";
+              else if (species === "Pesca in fiume/canale") iconUrl = "fiume.png";
+              else if (species === "Pesca in barca") iconUrl = "barca.png";
+
+              // marker HTML: immagine tonda + testo
+              const html = `
+                <div style="display:flex; align-items:center; gap:6px;">
+                  <img src="${iconUrl}" style="width:40px; height:40px; border-radius:50%;">
+                  <span style="font-size:14px; font-weight:bold; color:#2c3e50;">
+                    ${specie}
+                  </span>
+                </div>
+              `;
+
+              return L.marker(latlng, {
+                icon: L.divIcon({
+                  html: html,
+                  className: "",
+                  iconAnchor: [20, 20],
+                  popupAnchor: [0, -20]
+                })
+              });
             },
             onEachFeature: function(feature, layer){
               layer.bindPopup(createPopup(feature.properties));
